@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Support HQ - Darmowa Pomoc Komputerowa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: #e2e8f0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(26, 32, 44, 0.9);
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 3px solid #2b6cb0;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            color: #63b3ed;
+            margin-bottom: 10px;
+        }
+        
+        .logo span {
+            color: #ed8936;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #a0aec0;
+            margin-bottom: 20px;
+        }
+        
+        .discord-btn {
+            display: inline-block;
+            background: #5865F2;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-top: 20px;
+        }
+        
+        .discord-btn:hover {
+            background: #4752c4;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .service-card {
+            background: rgba(45, 55, 72, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #ed8936;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            background: rgba(55, 65, 81, 0.9);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        footer {
+            background: rgba(26, 32, 44, 0.95);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 2px solid #4a5568;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">🛠️ Tech Support <span>HQ</span></h1>
+            <p class="tagline">Darmowa pomoc techniczna dla każdego</p>
+            <a href="https://discord.gg/3tU7vVnvfv" class="discord-btn" target="_blank">
+                🔗 Dołącz do nas na Discord
+            </a>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="services">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h2>Pomoc z Windows</h2>
+                <p>Rozwiązywanie problemów z Windows 10/11, BSOD-y, optymalizacja systemu, usuwanie wirusów.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🎮</div>
+                <h2>Optymalizacja Gier</h2>
+                <p>Więcej FPS, mniejsze lagi, konfiguracja kart graficznych, rozwiązywanie problemów z grami.</p>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h2>Wsparcie Sprzętowe</h2>
+                <p>Doradztwo przy zakupie, diagnostyka, rozbudowa PC, chłodzenie, podkręcanie.</p>
+            </div>
+        </section>
+        
+        <section style="text-align: center; margin: 50px 0;">
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">📞 Jak działamy?</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+                Pomagamy całkowicie <strong>ZA DARMO</strong> przez Discord. Nasi doświadczeni użytkownicy 
+                pomogą Ci rozwiązać problem krok po kroku. Bez skomplikowanych terminów, w prostym języku.
+            </p>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <h3>Tech Support HQ</h3>
+            <p>Darmowa społeczność pomocy technicznej</p>
+            <p style="margin: 20px 0;">
+                <a href="https://discord.gg/3tU7vVnvfv" style="color: #63b3ed; text-decoration: none;">
+                    https://discord.gg/3tU7vVnvfv
+                </a>
+            </p>
+            <p style="color: #a0aec0; font-size: 0.9rem;">
+                © 2024 Tech Support HQ. Wszelkie porady udzielane są na własne ryzyko użytkownika.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
