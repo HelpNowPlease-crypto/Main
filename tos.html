@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warunki Korzystania - Tech Support HQ</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            line-height: 1.8;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        /* ===== CONTAINER ===== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid #334155;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #2b6cb0, #ed8936, #9d174d);
+        }
+        
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #475569;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #63b3ed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .logo-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, #63b3ed, #ed8936);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+        
+        /* ===== WARNING SECTION ===== */
+        .warning-section {
+            background: linear-gradient(135deg, #7f1d1d 0%, #9d174d 100%);
+            border: 3px solid #fca5a5;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: warningPulse 3s infinite;
+        }
+        
+        @keyframes warningPulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+        
+        .warning-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .warning-title {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .warning-text {
+            color: #fecaca;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* ===== CONTENT SECTIONS ===== */
+        .section {
+            margin: 40px 0;
+            padding: 25px;
+            background: rgba(15, 23, 42, 0.6);
+            border-radius: 10px;
+            border-left: 4px solid #3b82f6;
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateX(10px);
+            background: rgba(15, 23, 42, 0.8);
+        }
+        
+        .section-title {
+            color: #93c5fd;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-number {
+            background: #3b82f6;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .subsection {
+            margin: 25px 0 15px 25px;
+        }
+        
+        .subsection-title {
+            color: #cbd5e0;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #475569;
+            padding-bottom: 8px;
+        }
+        
+        /* ===== LISTS ===== */
+        ul, ol {
+            margin: 15px 0 15px 40px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            padding-left: 10px;
+            position: relative;
+        }
+        
+        li::before {
+            content: '▸';
+            color: #ed8936;
+            position: absolute;
+            left: -20px;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            background: rgba(237, 137, 54, 0.1);
+            border-left: 4px solid #ed8936;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        /* ===== BUTTONS ===== */
+        .button-container {
+            text-align: center;
+            margin: 50px 0 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .accept-btn, .reject-btn {
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        
+        .accept-btn {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+        
+        .accept-btn:hover {
+            background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+        
+        .reject-btn {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+        
+        .reject-btn:hover {
+            background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(239, 68, 68, 0.3);
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #475569;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #63b3ed;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: #90cdf4;
+            text-decoration: underline;
+        }
+        
+        .discord-link {
+            background: #5865F2;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        
+        .discord-link:hover {
+            background: #4752c4;
+            transform: translateY(-3px);
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .logo {
+                font-size: 2rem;
+                flex-direction: column;
+            }
+            
+            .logo-text {
+                font-size: 1.8rem;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .warning-section {
+                padding: 20px;
+            }
+            
+            .warning-title {
+                font-size: 1.5rem;
+            }
+            
+            ul, ol {
+                margin-left: 25px;
+            }
+            
+            .accept-btn, .reject-btn {
+                padding: 15px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        /* ===== PRINT STYLES ===== */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .container {
+                box-shadow: none !important;
+                border: 1px solid #ddd !important;
+            }
+            
+            .button-container,
+            .discord-link {
+                display: none !important;
+            }
+        }
+    </style>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <div class="logo">
+                <i class="fas fa-tools"></i>
+                <span class="logo-text">TECH SUPPORT HQ</span>
+                <i class="fas fa-headset"></i>
+            </div>
+            <p class="tagline">Warunki Korzystania z Serwisu Pomocy Technicznej</p>
+        </div>
+        
+        <!-- WARNING SECTION -->
+        <div class="warning-section">
+            <div class="warning-icon">⚠️</div>
+            <h2 class="warning-title">WAŻNE: PRZECZYTAJ PRZED KORZYSTANIEM</h2>
+            <p class="warning-text">
+                Korzystając z serwera Discord Tech Support HQ, <strong>BEZWARUNKOWO AKCEPTUJESZ</strong> 
+                poniższe warunki. Jeżeli nie akceptujesz pełnego wyłączenia odpowiedzialności administracji, 
+                <strong>NIE MASZ PRAWA KORZYSTAĆ</strong> z tego serwera.
+            </p>
+        </div>
+        
+        <!-- SECTION 1 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">1</span>
+                Akceptacja Warunków
+            </h2>
+            <p>Dołączając do serwera Discord "Tech Support HQ", oświadczasz że:</p>
+            <ul>
+                <li>Zapoznałeś się z poniższymi warunkami w całości</li>
+                <li>W pełni je rozumiesz i akceptujesz ich znaczenie</li>
+                <li><strong>BEZWARUNKOWO I DOBROWOLNIE</strong> się na nie zgadzasz</li>
+            </ul>
+            
+            <div class="highlight">
+                <p><strong>JEŚLI NIE AKCEPTUJESZ poniższych warunków:</strong></p>
+                <ol>
+                    <li>NIE MASZ PRAWA korzystać z serwera Tech Support HQ</li>
+                    <li>Powinieneś NIEZWŁOCZNIE opuścić serwer</li>
+                    <li>Administracja NIE ponosi wobec Ciebie ŻADNYCH obowiązków</li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- SECTION 2 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">2</span>
+                Pełne Wyłączenie Odpowiedzialności
+            </h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">A) ADMINISTRACJA NIE PONOSI ODPOWIEDZIALNOŚCI ZA:</h3>
+                <ul>
+                    <li>Uszkodzenie, zniszczenie lub utratę sprzętu komputerowego</li>
+                    <li>Utratę danych, dokumentów, plików, baz danych</li>
+                    <li>Koszty napraw, wymiany części, serwisu technicznego</li>
+                    <li>Utratę wartości mienia lub możliwości jego użytkowania</li>
+                    <li>Stres, frustrację, utratę czasu, problemy psychiczne</li>
+                    <li>Utratę zarobków, korzyści majątkowych</li>
+                    <li>Problemy w pracy, nauce lub życiu prywatnym</li>
+                </ul>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">B) SZKODY WYNIKAJĄCE Z:</h3>
+                <ul>
+                    <li>Stosowania udzielonych porad i instrukcji</li>
+                    <li>Pobierania i instalacji polecanych programów</li>
+                    <li>Wykonywania sugerowanych operacji na systemie</li>
+                    <li>Modyfikacji rejestru, ustawień systemowych</li>
+                    <li>Niestosowania się do ostrzeżeń i zaleceń</li>
+                    <li>Błędów w udzielonych poradach (nawet nieumyślnych)</li>
+                </ul>
+            </div>
+            
+            <div class="highlight">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>KORZYSTASZ Z POMOCY NA WŁASNE, CAŁKOWITE RYZYKO.</strong></p>
+                <p>Wszystkie porady udzielane są "TAK JAK SĄ" (AS IS) bez jakiejkolwiek gwarancji poprawności.</p>
+            </div>
+        </div>
+        
+        <!-- SECTION 3 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">3</span>
+                Obowiązki Użytkownika
+            </h2>
+            <p>Zobowiązujesz się do przestrzegania następujących zasad:</p>
+            
+            <ol>
+                <li><strong>ZAWSZE tworzyć kopię zapasową danych</strong> przed jakąkolwiek ważną operacją</li>
+                <li><strong>WERYFIKOWAĆ otrzymane porady</strong> z oficjalnymi źródłami i dokumentacją</li>
+                <li><strong>KONSULTOWAĆ się z profesjonalnym serwisem</strong> w przypadku poważnych problemów</li>
+                <li><strong>SAMODZIELNIE oceniać ryzyko</strong> każdego podejmowanego działania</li>
+                <li><strong>NIE WYKONYWAĆ operacji</strong>, których nie rozumiesz w pełni</li>
+                <li><strong>POINFORMOWAĆ</strong> jeśli masz wątpliwości co do bezpieczeństwa porady</li>
+            </ol>
+        </div>
+        
+        <!-- SECTION 4 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">4</span>
+                Rezygnacja z Roszczeń
+            </h2>
+            <p>Akceptując niniejsze warunki, wyraźnie oświadczasz że:</p>
+            
+            <ul>
+                <li><strong>REZYGNUJESZ</strong> z prawa do dochodzenia jakichkolwiek roszczeń od administracji serwera</li>
+                <li><strong>ZRZEKASZ SIĘ</strong> możliwości składania skarg, reklamacji lub żądań</li>
+                <li><strong>AKCEPTUJESZ</strong> że wszystkie działania na swoim sprzęcie podejmujesz wyłącznie na własną odpowiedzialność</li>
+                <li><strong>WYRAŻASZ ZGODĘ</strong> że administracja nie może być pociągnięta do odpowiedzialności za jakiekolwiek szkody</li>
+                <li><strong>ZGADZASZ SIĘ</strong> że jedynym środkiem zaradczym w przypadku problemu jest zaprzestanie korzystania z serwera</li>
+            </ul>
+        </div>
+        
+        <!-- SECTION 5 -->
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">5</span>
+                Postanowienia Końcowe
+            </h2>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">5.1. Zmiany Warunków</h3>
+                <p>Administracja zastrzega sobie prawo do zmiany niniejszych warunków w dowolnym momencie. Kontynuowanie korzystania z serwera po wprowadzeniu zmian jest równoznaczne z ich akceptacją.</p>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">5.2. Prawo Właściwe</h3>
+                <p>Niniejsze warunki regulowane są przez prawo polskie. Wszelkie spory będą rozstrzygane przez sąd właściwy dla siedziby administratora serwera.</p>
+            </div>
+            
+            <div class="subsection">
+                <h3 class="subsection-title">5.3. Kontakt</h3>
+                <p>W sprawach związanych z warunkami korzystania, skontaktuj się przez serwer Discord.</p>
+            </div>
+        </div>
+        
+        <!-- BUTTONS -->
+        <div class="button-container">
+            <button class="accept-btn" onclick="acceptTerms()">
+                <i class="fas fa-check-circle"></i>
+                AKCEPTUJĘ WARUNKI W CAŁOŚCI
+            </button>
+            
+            <button class="reject-btn" onclick="rejectTerms()">
+                <i class="fas fa-times-circle"></i>
+                NIE AKCEPTUJĘ - OPUSZCZAM SERWER
+            </button>
+        </div>
+        
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="footer-links">
+                <a href="#" class="footer-link" onclick="window.print()"><i class="fas fa-print"></i> Wydrukuj</a>
+                <a href="#" class="footer-link" onclick="downloadTOS()"><i class="fas fa-download"></i> Pobierz PDF</a>
+                <a href="index.html" class="footer-link"><i class="fas fa-home"></i> Strona Główna</a>
+            </div>
+            
+            <a href="https://discord.gg/3tU7vVnvfv" class="discord-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                Dołącz do naszego Discord
+            </a>
+            
+            <p style="margin-top: 25px;">
+                <strong>Tech Support HQ</strong><br>
+                Darmowa społeczność pomocy technicznej
+            </p>
+            
+            <p style="margin-top: 15px; color: #64748b; font-size: 0.8rem;">
+                Ostatnia aktualizacja: <span id="current-date"></span><br>
+                © 2024 Tech Support HQ. Wszystkie prawa zastrzeżone.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Set current date
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString('pl-PL');
+        
+        // Accept Terms
+        function acceptTerms() {
+            const confirmAccept = confirm(
+                'OSTATECZNE POTWIERDZENIE:\n\n' +
+                'Czy na pewno akceptujesz warunki w CAŁOŚCI?\n' +
+                '✅ Administracja NIE ponosi odpowiedzialności za szkody\n' +
+                '✅ Wszystkie działania podejmujesz na własne ryzyko\n' +
+                '✅ Rezygnujesz z prawa do roszczeń\n\n' +
+                'Kliknij OK tylko jeśli w pełni rozumiesz i akceptujesz.'
+            );
+            
+            if (confirmAccept) {
+                alert('Dziękujemy za akceptację warunków!\n\nZapisz tę stronę jako potwierdzenie.\nMożesz teraz dołączyć do serwera Discord.');
+                window.location.href = 'https://discord.gg/3tU7vVnvfv';
+            }
+        }
+        
+        // Reject Terms
+        function rejectTerms() {
+            const confirmReject = confirm(
+                'Czy na pewno NIE akceptujesz warunków?\n\n' +
+                'Jeżeli nie akceptujesz, NIE MASZ PRAWA korzystać z serwera Tech Support HQ.'
+            );
+            
+            if (confirmReject) {
+                alert('Jeżeli nie akceptujesz warunków, nie korzystaj z serwera.\n\nSerwer zostanie opuszczony.');
+                window.close();
+            }
+        }
+        
+        // Download as PDF (simulated)
+        function downloadTOS() {
+            alert('Funkcja pobierania PDF będzie dostępna wkrótce!\n\nNa razie użyj opcji drukowania (Ctrl+P) i zapisz jako PDF.');
+            window.print();
+        }
+        
+        // Show warning on page load
+        window.onload = function() {
+            setTimeout(function() {
+                alert('UWAGA: Przed korzystaniem z serwera musisz zaakceptować poniższe warunki.\n\nJeżeli nie akceptujesz pełnego wyłączenia odpowiedzialności administracji,\nNIE KORZYSTAJ z serwera Tech Support HQ.');
+            }, 500);
+            
+            // Add scroll animation
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateX(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateX(-20px)';
+                section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(section);
+            });
+        }
+        
+        // Print styles
+        window.addEventListener('beforeprint', () => {
+            document.querySelector('.button-container').style.display = 'none';
+            document.querySelector('.discord-link').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
