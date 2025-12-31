@@ -4,171 +4,899 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Support HQ - Darmowa Pomoc Komputerowa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== RESET & BASE STYLES ===== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background: #0f172a;
             color: #e2e8f0;
             line-height: 1.6;
-            min-height: 100vh;
+            overflow-x: hidden;
         }
-        
+
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
-        
+
+        /* ===== HEADER & NAVIGATION ===== */
         header {
-            background: rgba(26, 32, 44, 0.9);
-            padding: 30px 0;
-            text-align: center;
-            border-bottom: 3px solid #2b6cb0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #1e293b;
+            padding: 15px 0;
         }
-        
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .logo {
-            font-size: 2.5rem;
-            color: #63b3ed;
-            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #fff;
+            text-decoration: none;
         }
-        
-        .logo span {
-            color: #ed8936;
+
+        .logo-icon {
+            color: #3b82f6;
+            font-size: 2rem;
         }
-        
-        .tagline {
-            font-size: 1.2rem;
-            color: #a0aec0;
-            margin-bottom: 20px;
+
+        .logo-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
         .discord-btn {
-            display: inline-block;
             background: #5865F2;
             color: white;
-            padding: 15px 30px;
+            padding: 10px 20px;
             border-radius: 8px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             transition: all 0.3s;
-            margin-top: 20px;
         }
-        
+
         .discord-btn:hover {
             background: #4752c4;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.3);
         }
-        
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #cbd5e0;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #3b82f6;
+            display: block;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SERVICES SECTION ===== */
         .services {
+            padding: 100px 0;
+            background: #1e293b;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            color: #fff;
+        }
+
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            margin: 50px 0;
         }
-        
+
         .service-card {
-            background: rgba(45, 55, 72, 0.8);
-            padding: 30px;
-            border-radius: 10px;
-            border-left: 4px solid #ed8936;
-            transition: transform 0.3s;
+            background: #334155;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #475569;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        }
+
         .service-card:hover {
-            transform: translateY(-5px);
-            background: rgba(55, 65, 81, 0.9);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            background: #3c4a63;
         }
-        
+
         .service-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            color: #60a5fa;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .service-description {
+            color: #cbd5e0;
+            font-size: 1.1rem;
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .how-it-works {
+            padding: 100px 0;
+            background: #0f172a;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            text-align: center;
+            max-width: 300px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto 20px;
+        }
+
+        .step-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .step-description {
+            color: #94a3b8;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            text-align: center;
+        }
+
+        .cta-title {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            color: #fff;
         }
-        
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #60a5fa;
+            padding: 15px 40px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            border: 2px solid #3b82f6;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
         footer {
-            background: rgba(26, 32, 44, 0.95);
-            padding: 40px 0;
-            text-align: center;
-            margin-top: 50px;
-            border-top: 2px solid #4a5568;
+            background: #0f172a;
+            padding: 60px 0 30px;
+            border-top: 1px solid #1e293b;
         }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #60a5fa;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #334155;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e0;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #1e293b;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
             }
-            
-            .logo {
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: #1e293b;
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                border-bottom: 1px solid #334155;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero-title {
+                font-size: 2.3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
                 font-size: 2rem;
             }
-            
-            .services {
-                grid-template-columns: 1fr;
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
             }
         }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                max-width: 100%;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; opacity: 0; }
+        .delay-2 { animation-delay: 0.4s; opacity: 0; }
+        .delay-3 { animation-delay: 0.6s; opacity: 0; }
+        .delay-4 { animation-delay: 0.8s; opacity: 0; }
     </style>
 </head>
 <body>
+    <!-- HEADER & NAVIGATION -->
     <header>
-        <div class="container">
-            <h1 class="logo">🛠️ Tech Support <span>HQ</span></h1>
-            <p class="tagline">Darmowa pomoc techniczna dla każdego</p>
-            <a href="https://discord.gg/3tU7vVnvfv" class="discord-btn" target="_blank">
-                🔗 Dołącz do nas na Discord
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-tools logo-icon"></i>
+                <span class="logo-text">Tech Support HQ</span>
             </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Strona Główna</a>
+                <a href="#services">Usługi</a>
+                <a href="#how-it-works">Jak Działamy</a>
+                <a href="#help">Pomoc</a>
+                <a href="tos.html">Regulamin</a>
+                <a href="https://discord.gg/3tU7vVnvfv" class="discord-btn" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    Dołącz
+                </a>
+            </div>
         </div>
     </header>
-    
-    <div class="container">
-        <section class="services">
-            <div class="service-card">
-                <div class="service-icon">💻</div>
-                <h2>Pomoc z Windows</h2>
-                <p>Rozwiązywanie problemów z Windows 10/11, BSOD-y, optymalizacja systemu, usuwanie wirusów.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🎮</div>
-                <h2>Optymalizacja Gier</h2>
-                <p>Więcej FPS, mniejsze lagi, konfiguracja kart graficznych, rozwiązywanie problemów z grami.</p>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🔧</div>
-                <h2>Wsparcie Sprzętowe</h2>
-                <p>Doradztwo przy zakupie, diagnostyka, rozbudowa PC, chłodzenie, podkręcanie.</p>
-            </div>
-        </section>
-        
-        <section style="text-align: center; margin: 50px 0;">
-            <h2 style="font-size: 2rem; margin-bottom: 20px;">📞 Jak działamy?</h2>
-            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
-                Pomagamy całkowicie <strong>ZA DARMO</strong> przez Discord. Nasi doświadczeni użytkownicy 
-                pomogą Ci rozwiązać problem krok po kroku. Bez skomplikowanych terminów, w prostym języku.
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1 class="hero-title fade-in">
+                Darmowa Pomoc Komputerowa<br>Dla Każdego
+            </h1>
+            <p class="hero-subtitle fade-in delay-1">
+                Doświadczeni specjaliści pomogą Ci rozwiązać każdy problem z komputerem, 
+                Windowsem lub grami. Całkowicie za darmo, przez Discord.
             </p>
-        </section>
-    </div>
-    
+            
+            <div class="cta-buttons fade-in delay-2">
+                <a href="https://discord.gg/3tU7vVnvfv" class="btn-primary" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    Dołącz do Discorda
+                </a>
+                <a href="#services" class="btn-secondary">
+                    <i class="fas fa-info-circle"></i>
+                    Dowiedz się więcej
+                </a>
+            </div>
+            
+            <div class="hero-stats fade-in delay-3">
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Wsparcie</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Darmowe</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Rozwiązanych Problemów</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Co oferujemy?</h2>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-medical"></i>
+                    </div>
+                    <h3 class="service-title">Diagnostyka Windows</h3>
+                    <p class="service-description">
+                        BSOD-y, wolny system, błędy aktualizacji, problemy z uruchamianiem.
+                        Zdiagnozujemy i naprawimy każdy problem z Windows 10/11.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="service-title">Optymalizacja Gier</h3>
+                    <p class="service-description">
+                        Niskie FPS, lagi, problemy z kompatybilnością. Optymalizujemy ustawienia
+                        graficzne i systemowe dla maksymalnej wydajności w grach.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-virus"></i>
+                    </div>
+                    <h3 class="service-title">Bezpieczeństwo</h3>
+                    <p class="service-description">
+                        Usuwanie wirusów, malware, ransomware. Ochrona przed atakami,
+                        czyszczenie systemu, odzyskiwanie zhakowanych kont.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="service-title">Wsparcie Sprzętowe</h3>
+                    <p class="service-description">
+                        Awarie podzespołów, przegrzewanie, problemy z zasilaczem.
+                        Pomoc w doborze i konfiguracji nowego sprzętu.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3 class="service-title">Problemy Sieciowe</h3>
+                    <p class="service-description">
+                        Słaby internet, problemy z WiFi, konfiguracja routera,
+                        udostępnianie plików, problemy z połączeniem.
+                    </p>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="service-title">Odzyskiwanie Danych</h3>
+                    <p class="service-description">
+                        Utracone pliki, przypadkowe formatowanie, uszkodzone dyski.
+                        Pomoc w odzyskiwaniu ważnych danych i dokumentów.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS SECTION -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title fade-in">Jak to działa?</h2>
+            
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Dołącz do Discorda</h3>
+                    <p class="step-description">
+                        Kliknij przycisk "Dołącz do Discorda" i wejdź na nasz serwer.
+                        Całkowicie za darmo, bez ukrytych opłat.
+                    </p>
+                </div>
+                
+                <div class="step fade-in delay-1">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Opisz problem</h3>
+                    <p class="step-description">
+                        W odpowiednim kanale lub przez system ticketów szczegółowo
+                        opisz swój problem. Im więcej informacji, tym lepiej.
+                    </p>
+                </div>
+                
+                <div class="step fade-in delay-2">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Otrzymaj pomoc</h3>
+                    <p class="step-description">
+                        Nasi doświadczeni specjaliści pomogą Ci krok po kroku
+                        rozwiązać problem. W prostym języku, bez technicznego żargonu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta" id="help">
+        <div class="container">
+            <h2 class="cta-title fade-in">Potrzebujesz pomocy?</h2>
+            <p class="cta-subtitle fade-in delay-1">
+                Nie czekaj aż problem się pogorszy. Dołącz do naszej społeczności
+                i otrzymaj profesjonalną pomoc zupełnie za darmo.
+            </p>
+            
+            <div class="cta-buttons fade-in delay-2">
+                <a href="https://discord.gg/3tU7vVnvfv" class="btn-primary" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    Uzyskaj pomoc teraz
+                </a>
+                <a href="tos.html" class="btn-secondary">
+                    <i class="fas fa-file-contract"></i>
+                    Przeczytaj regulamin
+                </a>
+            </div>
+            
+            <div class="hero-stats fade-in delay-3" style="margin-top: 50px;">
+                <div class="stat-item">
+                    <span class="stat-number"><i class="fas fa-bolt"></i></span>
+                    <span class="stat-label">Szybka odpowiedź</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number"><i class="fas fa-user-check"></i></span>
+                    <span class="stat-label">Doświadczeni specjaliści</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number"><i class="fas fa-lock"></i></span>
+                    <span class="stat-label">Bezpieczna pomoc</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
         <div class="container">
-            <h3>Tech Support HQ</h3>
-            <p>Darmowa społeczność pomocy technicznej</p>
-            <p style="margin: 20px 0;">
-                <a href="https://discord.gg/3tU7vVnvfv" style="color: #63b3ed; text-decoration: none;">
-                    https://discord.gg/3tU7vVnvfv
-                </a>
-            </p>
-            <p style="color: #a0aec0; font-size: 0.9rem;">
-                © 2024 Tech Support HQ. Wszelkie porady udzielane są na własne ryzyko użytkownika.
-            </p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Tech Support HQ</h3>
+                    <p>Darmowa społeczność pomocy technicznej dla każdego. Pomagamy rozwiązywać problemy z komputerami, Windowsem i grami.</p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/3tU7vVnvfv" target="_blank" title="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" title="E-mail">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Szybkie linki</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Strona Główna</a></li>
+                        <li><a href="#services">Usługi</a></li>
+                        <li><a href="#how-it-works">Jak Działamy</a></li>
+                        <li><a href="tos.html">Regulamin</a></li>
+                        <li><a href="#help">Pomoc</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Pomoc techniczna</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Windows 10/11</a></li>
+                        <li><a href="#">Optymalizacja gier</a></li>
+                        <li><a href="#">Bezpieczeństwo</a></li>
+                        <li><a href="#">Problemy sprzętowe</a></li>
+                        <li><a href="#">Sieć i internet</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-globe"></i> Discord: Tech Support HQ</li>
+                        <li><i class="fas fa-link"></i> <a href="https://discord.gg/3tU7vVnvfv">discord.gg/3tU7vVnvfv</a></li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Pomoc tylko przez Discord</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Tech Support HQ. Wszelkie prawa zastrzeżone.</p>
+                <p style="margin-top: 10px; font-size: 0.8rem; color: #94a3b8;">
+                    Wszystkie porady udzielane są na własne ryzyko użytkownika. 
+                    <a href="tos.html" style="color: #60a5fa;">Przeczytaj pełen regulamin</a>.
+                </p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Current year for copyright
+        document.querySelector('.footer-bottom p').innerHTML = 
+            document.querySelector('.footer-bottom p').innerHTML.replace('2024', new Date().getFullYear());
+    </script>
 </body>
 </html>
